@@ -90,6 +90,15 @@ if faculty_file and visit_file:
            colors=["#28a745", "#ffc107", "#dc3545"])
     ax.axis("equal")
     st.pyplot(fig)
+    
+    # ✅ Download Button
+    csv = final_df.to_csv(index=False).encode("utf-8")
+    st.download_button(
+        label="⬇️ Download Visit Status as CSV",
+        data=csv,
+        file_name="adjunct_visit_status.csv",
+        mime="text/csv"
+    )
 
 else:
     st.info("Please upload both a Faculty Excel file and a Visit Record Excel file from LEO.")
